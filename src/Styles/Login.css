@@ -1,0 +1,37 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+.login {
+  /* fallback for old browsers */
+  background: rgb(182, 228, 210);
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom right,
+    rgb(39, 105, 131),
+    rgb(182, 228, 210)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to bottom right,
+    rgb(39, 105, 131),
+    rgb(182, 228, 210)
+  );
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+}
