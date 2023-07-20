@@ -4,26 +4,26 @@ import "../Styles/Signup.css";
 import { Link } from "react-router-dom";
 import { useFormik } from 'formik'
 
-function Signup({ url}) {
-  
-  const [registered, setRegistered] = useState(false);
-  const [success,setSuccess]=useState(false);
+function Signup({ url }) {
 
-  const HandleSignup = async (name, email, password)=> {
+  const [registered, setRegistered] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const HandleSignup = async (name, email, password) => {
     const DB = await axios.get(`${url}/users`);
     const data = DB.data;
     let Userexist = data.find((data) => data.email === email);
     if (!Userexist) {
       axios
         .post(`${url}/createuser`, { name, email, password })
-        .then(() => {         
+        .then(() => {
           setRegistered(false);
           setSuccess(true)
         })
         .catch((err) => console.error(err));
     } else {
-      setRegistered(true); 
-      setSuccess(false)     
+      setRegistered(true);
+      setSuccess(false)
     }
   };
 
@@ -35,13 +35,13 @@ function Signup({ url}) {
     if (!values.email) {
       errors.email = "*Required"
     }
-    if(!values.password){
+    if (!values.password) {
       errors.password = "*Required"
-    } 
-    if(!values.repassword){
+    }
+    if (!values.repassword) {
       errors.repassword = "*Required"
-    }            
-    if(!(values.repassword===values.password)){
+    }
+    if (!(values.repassword === values.password)) {
       errors.repassword = "*Password Mismatch"
     }
     return errors
@@ -49,18 +49,18 @@ function Signup({ url}) {
 
   const Formik = useFormik({
     initialValues: {
-      name:"",
+      name: "",
       email: "",
-      password:"",
-      repassword:""
+      password: "",
+      repassword: ""
     },
     validate,
     onSubmit: values => {
-      HandleSignup(Formik.values.name,Formik.values.email,Formik.values.password)
-      Formik.values.name="";
+      HandleSignup(Formik.values.name, Formik.values.email, Formik.values.password)
+      Formik.values.name = "";
       Formik.values.email = "";
       Formik.values.password = "";
-      Formik.values.repassword="";
+      Formik.values.repassword = "";
     }
   })
 
@@ -117,9 +117,9 @@ function Signup({ url}) {
                             placeholder="New Password"
                             value={Formik.values.password}
                             onChange={Formik.handleChange}
-                            onBlur={Formik.handleBlur}                            
+                            onBlur={Formik.handleBlur}
                           />
-                          {Formik.touched.password && Formik.errors.password? <span className='fw-bold' style={{color: "red" }}>{Formik.errors.password}</span> : null}
+                          {Formik.touched.password && Formik.errors.password ? <span className='fw-bold' style={{ color: "red" }}>{Formik.errors.password}</span> : null}
                         </div>
                       </div>
 
@@ -137,26 +137,30 @@ function Signup({ url}) {
                           />
                           {Formik.touched.repassword && Formik.errors.repassword ? <span className='fw-bold' style={{ color: "red" }}>{Formik.errors.repassword}</span> : null}
                         </div>
-                      </div> 
+                      </div>
                       <div className="form-outline text-center mb-1">
-                        <span className="text-danger fw-bold">{registered?"User exist,Try with new mail id":null}</span> <br/>
-                        <span className="text-primary fw-bold">{success?"Registration success, Click Login Page":null}</span>
-                      </div>                        
-                      <div className="d-flex justify-content-center mx-4 mb-1">
-                        <button
-                          type="submit"
-                          className="btn btn-outline-danger me-4"
-                        >
-                          Register
-                        </button>
-                        <Link to="/">
+                        <span className="text-danger fw-bold">{registered ? "User exist,Try with new mail id" : null}</span> <br />
+                        <span className="text-primary fw-bold">{success ? "Registration success, Click Login Page" : null}</span>
+                      </div>
+                      <div className="d-flex justify-content-center mx-4 mb-1 row">
+                        <div className="col-lg-5 col-md-12  m-1 ">
                           <button
-                            className="btn btn-outline-danger"                            
+                            type="submit"
+                            className="btn btn-outline-danger me-4"
                           >
-                          Login page
+                            Register
                           </button>
-                        </Link>
-                      </div>                     
+                        </div>
+                        <div className="col-lg-6 col-md-12 m-1">
+                          <Link to="/">
+                            <button
+                              className="btn btn-outline-danger"
+                            >
+                              Login page
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
                     </form>
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">

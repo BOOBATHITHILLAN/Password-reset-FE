@@ -106,28 +106,32 @@ function Login({ url }) {
                         <span className="text-primary">{success ? "Logged in Successfully/ Log in datas verified" : null}</span>
                       </div>
 
-                      <div className="text-center pt-1 pb-1">
-
-                        <button
-                          className="btn btn-outline-danger me-5"
-                          type="submit"
-                        >
-                          Log in
-                        </button>
-
-                        <Link to="/forgotpassword">
-                          <button className="btn btn-outline-danger me-5">
-                            Forgot password?
-                          </button>
-                        </Link>
-                        <Link to="/Signup">
+                      <div className="text-center pt-1 pb-1 row mb-2">
+                        <div className="col-lg-3 col-md-12 m-1">
                           <button
-                            type="button"
-                            className="btn btn-outline-danger me-2"
+                            className="btn btn-outline-danger me-5"
+                            type="submit"
                           >
-                            Create New
+                            Log in
                           </button>
-                        </Link>
+                        </div>
+                        <div className="col-lg-3 col-md-12 m-1">
+                          <Link to="/forgotpassword">
+                            <button className="btn btn-outline-danger me-5">
+                              Forgot password?
+                            </button>
+                          </Link>
+                        </div>
+                        <div className="col-lg-3 col-md-12 m-1">
+                          <Link to="/Signup">
+                            <button
+                              type="button"
+                              className="btn btn-outline-danger me-5"
+                            >
+                              Create New
+                            </button>
+                          </Link>
+                        </div>
                       </div>
 
                       <div className="d-flex align-items-center justify-content-center pb-3 me-5">

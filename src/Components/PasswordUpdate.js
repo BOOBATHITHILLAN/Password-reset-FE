@@ -90,22 +90,26 @@ function PasswordUpdate({ url }) {
             <div className='text-center'>
               <button type="submit" className="btn btn-outline-primary w-40" >Reset Password</button>
             </div>
-            <div className="d-flex justify-content-center mt-4">
-              <Link to="/">
-                <button
-                  className="btn btn-outline-danger mb-3 me-5"
-                >
-                  Log in
-                </button>
-              </Link>
-              <Link to="/Signup">
-                <button
-                  type="button"
-                  className="btn btn-outline-danger mb-3 me-5"
-                >
-                  Register
-                </button>
-              </Link>
+            <div className="text-center mt-4 row">
+              <div className='col-lg-6 col-md-12'>
+                <Link to="/">
+                  <button
+                    className="btn btn-outline-danger mb-3 me-5"
+                  >
+                    Log in
+                  </button>
+                </Link>
+              </div>
+              <div className='col-lg-6 col-md-12'>
+                <Link to="/Signup">
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger mb-3 me-5"
+                  >
+                    Register
+                  </button>
+                </Link>
+              </div>
             </div>
           </form>
         </div>

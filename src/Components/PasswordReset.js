@@ -5,11 +5,11 @@ import '../Styles/PasswordReset.css'
 import { useFormik } from 'formik'
 
 
-function PasswordReset({url }) {
+function PasswordReset({ url }) {
 
-    
+
     const [emailavailable, setEmailavailable] = useState(false);
-    const [mail,setMail]=useState(false)
+    const [mail, setMail] = useState(false)
 
 
     const HandleEmailSend = async (email) => {
@@ -22,7 +22,7 @@ function PasswordReset({url }) {
                 axios.put(`${url}/forgotpassword`, { email: Email })
                 setEmailavailable(false)
                 setMail(true)
-                
+
             } else {
                 setEmailavailable(true)
                 setMail(false)
@@ -70,28 +70,32 @@ function PasswordReset({url }) {
                             {Formik.touched.email && Formik.errors.email ? <span className='fw-bold' style={{ color: "red" }}>{Formik.errors.email}</span> : null}
                         </div>
                         <div className="form-outline text-center mb-1">
-                        <span className="text-danger">{emailavailable ? "User not found,Wrong mail id" :null }</span> <br />
-                        <span className="text-primary">{mail ? "Password reset link send to your mail id, Successfully" : null}</span>
-                      </div>
+                            <span className="text-danger">{emailavailable ? "User not found,Wrong mail id" : null}</span> <br />
+                            <span className="text-primary">{mail ? "Password reset link send to your mail id, Successfully" : null}</span>
+                        </div>
                         <div className='text-center'>
                             <button type="submit" className="btn btn-outline-primary w-40" >Reset Password</button>
                         </div>
-                        <div className="d-flex justify-content-center mt-4">
-                            <Link to="/">
-                                <button
-                                    className="btn btn-outline-danger mb-3 me-5"
-                                >
-                                    Log in
-                                </button>
-                            </Link>
-                            <Link to="/Signup">
-                                <button
-                                    type="button"
-                                    className="btn btn-outline-danger mb-3 me-5"
-                                >
-                                    Register
-                                </button>
-                            </Link>
+                        <div className="d-flex justify-content-center mt-4 row">
+                            <div className='col-lg-6 col-md-12 text-center' >
+                                <Link to="/">
+                                    <button
+                                        className="btn btn-outline-danger mb-3 me-5 md-col-12"
+                                    >
+                                        Log in
+                                    </button>
+                                </Link>
+                            </div>
+                            <div className='col-lg-6 col-md-12 text-center'>
+                                <Link to="/Signup">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-danger mb-3 me-5"
+                                    >
+                                        Register
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </form>
                 </div>
