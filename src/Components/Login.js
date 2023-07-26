@@ -12,12 +12,12 @@ function Login({ url }) {
   const HandleLogin = async (email, password) => {
     try {
       await axios.post(`${url}/signin`, { email, password })
-      setUserfound(true)
+      setUserfound(false)
       setSuccess(true)
     }
     catch (err) {
       console.error(err)
-      setUserfound(false)
+      setUserfound(true)
       setSuccess(false)
     }
 
