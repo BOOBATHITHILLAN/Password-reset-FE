@@ -13,7 +13,7 @@ function PasswordUpdate({ url }) {
   const HandlePasswordReset = async (password) => {
 
     try {
-      const res = await axios.put(`${url}/passwordreset/${id}`, { ...Data, "password": password })
+      const res = await axios.put(`${url}/passwordreset/${id}`, {"password": password })
       if (res) {
         setUpdate(true)
       }
