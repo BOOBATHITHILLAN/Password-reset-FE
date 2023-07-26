@@ -10,22 +10,18 @@ function Signup({ url }) {
   const [success, setSuccess] = useState(false);
 
   const HandleSignup = async (name, email, password) => {
-    const DB = await axios.get(`${url}/users`);
-    const data = DB.data;
-    let Userexist = data.find((data) => data.email === email);
-    if (!Userexist) {
-      axios
-        .post(`${url}/createuser`, { name, email, password })
-        .then(() => {
-          setRegistered(false);
-          setSuccess(true)
-        })
-        .catch((err) => console.error(err));
-    } else {
+    try {
+      axios.post(`${url}/createuser`, { name, email, password })
+      setRegistered(false);
+      setSuccess(true)
+    }
+    catch (err) {
+      console.log(err)
       setRegistered(true);
       setSuccess(false)
     }
-  };
+
+  }
 
   const validate = values => {
     const errors = {};

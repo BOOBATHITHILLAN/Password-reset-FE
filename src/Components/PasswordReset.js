@@ -14,21 +14,15 @@ function PasswordReset({ url }) {
 
     const HandleEmailSend = async (email) => {
         try {
-            const DB = await axios.get(`${url}/users`);
-            const data = DB.data;
-            const Email = email.trim();
-            const Data = data.find(user => user.email === email);
-            if (Data) {
-                axios.put(`${url}/forgotpassword`, { email: Email })
-                setEmailavailable(false)
-                setMail(true)
-
-            } else {
-                setEmailavailable(true)
-                setMail(false)
-            }
+            axios.put(`${url}/forgotpassword`, { email })
+            setEmailavailable(false)
+            setMail(true)
         }
-        catch (err) { console.error(err) }
+        catch (err) {
+            console.error(err)
+            setEmailavailable(true)
+            setMail(false)
+        }
 
     }
     const validate = values => {

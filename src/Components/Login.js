@@ -11,18 +11,15 @@ function Login({ url }) {
 
   const HandleLogin = async (email, password) => {
     try {
-      const DB = await axios.get(`${url}/users`)
-      const data = DB.data
-      const Validuser = data.find(user => user.email === email && user.password === password);
-      if (Validuser) {
-        setUserfound(true)
-        setSuccess(true)
-      } else {
-        setUserfound(false)
-        setSuccess(false)
-      }
+      await axios.post(`${url}/signin`, { email, password })
+      setUserfound(true)
+      setSuccess(true)
     }
-    catch (err) { console.error(err) }
+    catch (err) {
+      console.error(err)
+      setUserfound(false)
+      setSuccess(false)
+    }
 
   }
 
