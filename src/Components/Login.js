@@ -11,7 +11,8 @@ function Login({ url }) {
 
   const HandleLogin = async (email, password) => {
     try {
-      await axios.post(`${url}/signin`, { email, password })
+      const res=await axios.post(`${url}/signin`, { email:email, password:password })
+      console.log(res)
       setUserfound(false)
       setSuccess(true)
     }
@@ -20,7 +21,6 @@ function Login({ url }) {
       setUserfound(true)
       setSuccess(false)
     }
-
   }
 
   const validate = values => {
