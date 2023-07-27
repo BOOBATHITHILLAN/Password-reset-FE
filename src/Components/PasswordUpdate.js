@@ -8,6 +8,7 @@ function PasswordUpdate({ url }) {
 
   const { id } = useParams();
   const [update, setUpdate] = useState(false)
+  const [error,setError]=useState(false)
 
 
   const HandlePasswordReset = async (password) => {
@@ -15,10 +16,12 @@ function PasswordUpdate({ url }) {
     try {
       await axios.patch(`${url}/passwordreset/${id}`, {password })
       setUpdate(true)
+      setError(false)
     }
     catch (error) {
       console.log(error)
       setUpdate(false)
+      setError(true)
     }
   }
 
@@ -80,6 +83,7 @@ function PasswordUpdate({ url }) {
             </div>
             <div className="form-outline text-center mb-1">
               <span className="text-primary">{update ? "Password Updated Successfully, Login to check password" : null}</span>
+              <span className="text-primary">{error ? "Activated Account" : null}</span>
             </div>
             <div className='text-center'>
               <button type="submit" className="btn btn-outline-primary w-40" >Reset Password</button>
