@@ -13,10 +13,8 @@ function PasswordUpdate({ url }) {
   const HandlePasswordReset = async (password) => {
 
     try {
-      const res = await axios.patch(`${url}/passwordreset/${id}`, { "password": password })
-      if (res) {
-        setUpdate(true)
-      }
+      await axios.patch(`${url}/passwordreset/${id}`, {password })
+      setUpdate(true)
     }
     catch (error) {
       console.log(error)
