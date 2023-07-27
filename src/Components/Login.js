@@ -14,11 +14,11 @@ function Login({ url }) {
       const res=await axios.post(`${url}/signin`, { email,password })
       console.log(res)      
       setSuccess(true)
-      setUserfound(false)
+      setUserfound(true)
     }
     catch (err) {
       console.error(err)
-      setUserfound(true)
+      setUserfound(false)
       setSuccess(false)
     }
   }
